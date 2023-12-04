@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:ingredient_inspire_recipe_recommender/pages/home.dart';
 import 'package:ingredient_inspire_recipe_recommender/pages/likes.dart';
+import 'package:ingredient_inspire_recipe_recommender/pages/recipecard.dart';
+import 'package:ingredient_inspire_recipe_recommender/pages/recipes.dart';
 import 'package:ingredient_inspire_recipe_recommender/pages/search.dart';
 import 'package:ingredient_inspire_recipe_recommender/pages/settings.dart';
 
@@ -22,7 +24,7 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
-  final List<Widget> _pages = [UserHome(), LikesPage(), SearchPage(), SettingsPage()];
+  final List<Widget> _pages = [UserHome(), RecipesPage(), SearchPage(), SettingsPage()];
 
   @override
   Widget build(BuildContext context) {
