@@ -25,7 +25,7 @@ class _RecipeCardState extends State<RecipeCard> {
         children: [
           Ink.image(
             image: AssetImage('assets/images/image1.jpg'),
-            height: 240,
+            height: 100,
             fit: BoxFit.cover,
           ),
           SizedBox(
