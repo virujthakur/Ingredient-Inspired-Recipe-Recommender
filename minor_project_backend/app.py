@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+import pandas as pd
 from fastai.vision.all import *
 from flask_cors import CORS
 import pathlib
@@ -9,7 +10,9 @@ app = Flask(__name__)
 CORS(app)
 
 # Loading the pre-trained model using colab
+
 learn = load_learner('resnet50_precision.pkl')
+recipes_df = pd.read_excel('Minor Project.xlsx', sheet_name= 'Recipes2Ing')  # Adjust the filename as needed
 
 @app.route('/predict', methods=['POST'])
 def predict():
@@ -33,11 +36,44 @@ def predict():
             prediction, _, _ = learn.predict(image)
             predictions.append(str(prediction))
 
+        # search for recipes after prediction
+        if not predictions:
+            return jsonify({'error': 'Please provide at least one ingredient.'}), 400
+
+        recipes= get_recipes_by_ingredients(predictions)
+        json_response = json.dumps(recipes)
         # Return the predictions as JSON
-        return jsonify({'predictions': predictions})
+        # print(jsonify(recipes))
+        return jsonify({'Recipes': json_response})
 
     except Exception as e:
         return jsonify({'error': str(e)})
+
+
+# Get recipes based on ingredient list
+def get_recipes_by_ingredients(ingredient_list):
+    print(ingredient_list)
+    # if not recipes_df:
+    #     print('false')
+    # print(recipes_df)
+    filtered_recipes = []
+
+    # print(len(recipes_df))
+    for index, row in recipes_df.iterrows():
+        # print(row)
+        ingredients = row['Recipes'].split(';')
+        cooking_time = row['Cooking Time']  # Assuming Ingredients column contains comma-separated values
+        # print(ingredients)
+        if all(ingredient in ingredients for ingredient in ingredient_list):
+            recipe_dict ={
+                'title' : ingredients[0],
+                'ingredients' : ingredients[1:],
+                'cooking time' : cooking_time
+            }
+            filtered_recipes.append(recipe_dict)
+
+    # print(filtered_recipes)
+    return filtered_recipes
 
 if __name__ == '__main__':
     app.run(debug=True)
