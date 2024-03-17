@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 
 class RecipeCard extends StatefulWidget {
-  const RecipeCard({Key? key}) : super(key: key);
+  final String title;
+  final String description;
+  final String cookingTime;
+
+  const RecipeCard({Key? key, required this.title, required this.description, required this.cookingTime}) : super(key: key);
 
   @override
   State<RecipeCard> createState() => _RecipeCardState();
@@ -48,7 +52,7 @@ class _RecipeCardState extends State<RecipeCard> {
                           Padding(
                             padding: EdgeInsets.all(8.0),
                             child: Text(
-                              'Recipe Title 1',
+                              widget.title,
                               style: TextStyle(
                                 fontSize: cardHeight * 0.08, // Adjust the font size
                                 fontWeight: FontWeight.bold,
@@ -60,7 +64,7 @@ class _RecipeCardState extends State<RecipeCard> {
                           Padding(
                             padding: EdgeInsets.all(8.0),
                             child: Text(
-                              'This is the description of the recipe',
+                              widget.description,
                               style: TextStyle(fontSize: cardHeight * 0.04), // Adjust the font size
                             ),
                           ),
@@ -69,7 +73,27 @@ class _RecipeCardState extends State<RecipeCard> {
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: IconButton(onPressed: () {}, icon: Icon(Icons.favorite)),
+                      child: Center(
+                        child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              SizedBox(
+                                height: cardHeight* 0.2,
+                                child: IconButton(
+                                    onPressed: () {},
+                                    icon: Icon(Icons.watch_later_outlined),
+                                    iconSize: cardHeight * 0.1,
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  widget.cookingTime,
+                                  style: TextStyle(fontSize: cardHeight * 0.04),
+                                ),
+                              )
+                        ]),
+                      ),
                     ),
                   ],
                 ),

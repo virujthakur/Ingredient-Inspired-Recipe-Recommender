@@ -24,7 +24,7 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
-  final List<Widget> _pages = [UserHome(), RecipesPage(), SearchPage(), SettingsPage()];
+  final List<Widget> _pages = [UserHome(), RecipesPage(recipeList: [],), SearchPage(), SettingsPage()];
 
   @override
   Widget build(BuildContext context) {

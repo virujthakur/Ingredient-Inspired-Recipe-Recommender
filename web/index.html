@@ -54,6 +54,10 @@
         }
       });
     });
+    window.addEventListener('popstate', function(event) {
+      // Send a message to the Flutter app when the browser back button is pressed
+      window.flutter_inappwebview.callHandler('onBrowserBack');
+    });
   </script>
 </body>
 </html>

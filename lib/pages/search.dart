@@ -1,9 +1,10 @@
 import 'dart:convert';
-import 'dart:html';
-
+import 'dart:js' as js; // Import the dart:js library
 import 'package:flutter/material.dart';
 import 'package:ingredient_inspire_recipe_recommender/identify_ingredients.dart';
 import 'package:multi_image_picker_view/multi_image_picker_view.dart';
+
+import 'recipes.dart';
 class SearchPage extends StatefulWidget {
   const SearchPage({Key? key}) : super(key: key);
 
@@ -17,6 +18,22 @@ class _SearchPageState extends State<SearchPage> {
     withReadStream: true,
     allowedImageTypes: ['png', 'jpg', 'jpeg'],
   );
+
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   // Register a message handler to receive messages from JavaScript
+  //     js.context['onBrowserBack'] = () {
+  //     // Handle the back button action here
+  //     // You can navigate back, or perform any other action
+  //     // For example, pop the current route if it's a modal dialog
+  //     if (Navigator.of(context).canPop()) {
+  //       Navigator.of(context).pop();
+  //     }
+  //   };
+  // }
+
+  bool isLoading = false;
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +54,10 @@ class _SearchPageState extends State<SearchPage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () async {
+        onPressed: isLoading ? null : () async {
+          setState(() {
+            isLoading = true; // Set loading state
+          });
           final images = controller.images;
 
           var response = await sendImagesRequest(images);
@@ -45,10 +65,44 @@ class _SearchPageState extends State<SearchPage> {
           String displayResult= "None";
 
           if (response.isNotEmpty && response != null) {
-            List<String> predictions = List<String>.from(decodedResponse['predictions']);
-            // print(predictions);
-            displayResult= predictions.join(',');
+            displayResult= json.encode(decodedResponse);
           }
+          // print(displayResult);
+          Map<String, dynamic> jsonResponse = json.decode(response);
+          String recipesJsonString = jsonResponse['Recipes'];
+
+          // Parse the "Recipes" JSON string to get the list of recipe objects
+          List<dynamic> recipes = json.decode(recipesJsonString);
+
+          // Create a list to store the recipes as dictionaries
+          List<Map<String, dynamic>> recipeList = [];
+
+          // Iterate over the recipes to build the dictionary
+          for (var recipe in recipes) {
+            String title = recipe['title'];
+            List<dynamic> ingredients = recipe['ingredients'];
+            String cookingTime = recipe['cooking time'];
+
+            // Create a dictionary for the current recipe
+            Map<String, dynamic> recipeDict = {
+              'title': title,
+              'ingredients': ingredients,
+              'cooking time' : cookingTime
+            };
+
+            // Add the recipe dictionary to the list
+            recipeList.add(recipeDict);
+          }
+
+
+          setState(() {
+            isLoading = false; // Reset loading state
+          });
+
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) => RecipesPage(recipeList: recipeList),),
+          );
 
           // use these images
           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
@@ -58,7 +112,7 @@ class _SearchPageState extends State<SearchPage> {
           )
           );
         },
-        child: Icon(Icons.rocket_launch),
+        child: isLoading ? CircularProgressIndicator() : Icon(Icons.rocket_launch),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
