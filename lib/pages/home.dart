@@ -35,12 +35,12 @@ class UserHome extends StatelessWidget {
                   sliderHeight: 300,
                   indicatorActiveColor: Colors.amberAccent,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
-                Center(
+                const Center(
                   child: Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: EdgeInsets.all(8.0),
                     child: Text(
                       'Ingredient Inspired Recipe Recommender, Your Culinary Guide!',
                       style: TextStyle(

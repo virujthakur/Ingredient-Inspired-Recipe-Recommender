@@ -1,11 +1,9 @@
-import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'package:http_parser/http_parser.dart';
 import 'package:multi_image_picker_view/multi_image_picker_view.dart';
-import 'package:path/path.dart';
 
 Future<String> sendImagesRequest(Iterable<ImageFile> imageFiles) async {
-    var request = http.MultipartRequest('POST', Uri.parse('http://localhost:5000/predict'));
+    var request = http.MultipartRequest('POST', Uri.parse('http://172.20.10.3:5000/predict'));
 
     // Add each image file to the request
     for (final image in imageFiles) {

@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'dart:js' as js; // Import the dart:js library
+// Import the dart:js library
 import 'package:flutter/material.dart';
 import 'package:ingredient_inspire_recipe_recommender/identify_ingredients.dart';
 import 'package:multi_image_picker_view/multi_image_picker_view.dart';
@@ -64,7 +64,7 @@ class _SearchPageState extends State<SearchPage> {
           var decodedResponse = json.decode(response);
           String displayResult= "None";
 
-          if (response.isNotEmpty && response != null) {
+          if (response.isNotEmpty) {
             displayResult= json.encode(decodedResponse);
           }
           // print(displayResult);
@@ -112,7 +112,7 @@ class _SearchPageState extends State<SearchPage> {
           )
           );
         },
-        child: isLoading ? CircularProgressIndicator() : Icon(Icons.rocket_launch),
+        child: isLoading ? const CircularProgressIndicator() : const Icon(Icons.rocket_launch),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );

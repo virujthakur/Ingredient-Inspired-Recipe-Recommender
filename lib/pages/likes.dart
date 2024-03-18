@@ -4,7 +4,7 @@ class LikesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return const Center(
       child: Text(
         'Likes Page!',
         style: TextStyle(

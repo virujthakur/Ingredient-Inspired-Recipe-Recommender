@@ -18,7 +18,7 @@ class _RecipeCardState extends State<RecipeCard> {
       clipBehavior: Clip.antiAlias,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(24),
-        side: BorderSide(
+        side: const BorderSide(
           color: Colors.grey,
           width: 1,
         ),
@@ -34,11 +34,11 @@ class _RecipeCardState extends State<RecipeCard> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Ink.image(
-                image: AssetImage('assets/images/image1.jpg'),
+                image: const AssetImage('assets/images/image1.jpg'),
                 height: cardHeight * 0.4, // Adjust the image height as needed
                 fit: BoxFit.cover,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 5,
               ),
               Expanded(
@@ -50,7 +50,7 @@ class _RecipeCardState extends State<RecipeCard> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Padding(
-                            padding: EdgeInsets.all(8.0),
+                            padding: const EdgeInsets.all(8.0),
                             child: Text(
                               widget.title,
                               style: TextStyle(
@@ -62,7 +62,7 @@ class _RecipeCardState extends State<RecipeCard> {
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsets.all(8.0),
+                            padding: const EdgeInsets.all(8.0),
                             child: Text(
                               widget.description,
                               style: TextStyle(fontSize: cardHeight * 0.04), // Adjust the font size
@@ -81,7 +81,7 @@ class _RecipeCardState extends State<RecipeCard> {
                                 height: cardHeight* 0.2,
                                 child: IconButton(
                                     onPressed: () {},
-                                    icon: Icon(Icons.watch_later_outlined),
+                                    icon: const Icon(Icons.watch_later_outlined),
                                     iconSize: cardHeight * 0.1,
                                 ),
                               ),
