@@ -1,22 +1,20 @@
+import 'package:camera/camera.dart';
 import 'package:http/http.dart' as http;
 import 'package:http_parser/http_parser.dart';
 import 'package:multi_image_picker_view/multi_image_picker_view.dart';
 
-Future<String> sendImagesRequest(Iterable<ImageFile> imageFiles) async {
-    var request = http.MultipartRequest('POST', Uri.parse('http://172.20.10.3:5000/predict'));
+Future<String> sendImagesRequest(List<XFile>? imageFiles) async {
+    var request = http.MultipartRequest('POST', Uri.parse('http://10.206.14.162:5000/predict'));
 
     // Add each image file to the request
-    for (final image in imageFiles) {
-        if (image.hasPath) {
-            request.files.add(await http.MultipartFile.fromPath('file', image.path!));
-        } else {
+
+    for (final image in imageFiles!) {
             request.files.add(http.MultipartFile.fromBytes(
                 'file',
-                image.bytes!,
+                await image.readAsBytes(),
                 filename: 'image.png', // Provide a default filename or use image.fileName if available
                 contentType: MediaType('image', 'png'), // Provide a valid content type
             ));
-        }
     }
 
     try {

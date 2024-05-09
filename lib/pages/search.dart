@@ -1,23 +1,43 @@
 import 'dart:convert';
 // Import the dart:js library
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:ingredient_inspire_recipe_recommender/identify_ingredients.dart';
 import 'package:multi_image_picker_view/multi_image_picker_view.dart';
 
 import 'recipes.dart';
 class SearchPage extends StatefulWidget {
-  const SearchPage({Key? key}) : super(key: key);
+  final initial_images;
+  const SearchPage({
+    super.key,
+    this.initial_images,
+}) ;
 
   @override
   State<SearchPage> createState() => _SearchPageState();
 }
 
 class _SearchPageState extends State<SearchPage> {
-  final controller = MultiImagePickerController(
-    maxImages: 10,
-    withReadStream: true,
-    allowedImageTypes: ['png', 'jpg', 'jpeg'],
-  );
+  late MultiImagePickerController controller;
+
+  Iterable<ImageFile> convertXFileListToImageFileIterable(List<XFile> xFiles) sync* {
+    for (var xFile in xFiles) {
+      // Convert each XFile to ImageFile
+      yield ImageFile(xFile.path, name: 'temp', extension: 'jpg');
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    // Initialize the controller with initial images
+    controller = MultiImagePickerController(
+      maxImages: 10,
+      withReadStream: true,
+      allowedImageTypes: ['png', 'jpg', 'jpeg'],
+      images: convertXFileListToImageFileIterable(widget.initial_images) ?? [],
+    );
+  }
 
   // @override
   // void initState() {
@@ -60,57 +80,57 @@ class _SearchPageState extends State<SearchPage> {
           });
           final images = controller.images;
 
-          var response = await sendImagesRequest(images);
-          var decodedResponse = json.decode(response);
-          String displayResult= "None";
-
-          if (response.isNotEmpty) {
-            displayResult= json.encode(decodedResponse);
-          }
-          // print(displayResult);
-          Map<String, dynamic> jsonResponse = json.decode(response);
-          String recipesJsonString = jsonResponse['Recipes'];
-
-          // Parse the "Recipes" JSON string to get the list of recipe objects
-          List<dynamic> recipes = json.decode(recipesJsonString);
-
-          // Create a list to store the recipes as dictionaries
-          List<Map<String, dynamic>> recipeList = [];
-
-          // Iterate over the recipes to build the dictionary
-          for (var recipe in recipes) {
-            String title = recipe['title'];
-            List<dynamic> ingredients = recipe['ingredients'];
-            String cookingTime = recipe['cooking time'];
-
-            // Create a dictionary for the current recipe
-            Map<String, dynamic> recipeDict = {
-              'title': title,
-              'ingredients': ingredients,
-              'cooking time' : cookingTime
-            };
-
-            // Add the recipe dictionary to the list
-            recipeList.add(recipeDict);
-          }
-
-
-          setState(() {
-            isLoading = false; // Reset loading state
-          });
-
-          Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(builder: (context) => RecipesPage(recipeList: recipeList),),
-          );
-
-          // use these images
-          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-              content: Text(
-                  displayResult
-              )
-          )
-          );
+          // var response = await sendImagesRequest(images);
+          // var decodedResponse = json.decode(response);
+          // String displayResult= "None";
+          //
+          // if (response.isNotEmpty) {
+          //   displayResult= json.encode(decodedResponse);
+          // }
+          // // print(displayResult);
+          // Map<String, dynamic> jsonResponse = json.decode(response);
+          // String recipesJsonString = jsonResponse['Recipes'];
+          //
+          // // Parse the "Recipes" JSON string to get the list of recipe objects
+          // List<dynamic> recipes = json.decode(recipesJsonString);
+          //
+          // // Create a list to store the recipes as dictionaries
+          // List<Map<String, dynamic>> recipeList = [];
+          //
+          // // Iterate over the recipes to build the dictionary
+          // for (var recipe in recipes) {
+          //   String title = recipe['title'];
+          //   List<dynamic> ingredients = recipe['ingredients'];
+          //   String cookingTime = recipe['cooking time'];
+          //
+          //   // Create a dictionary for the current recipe
+          //   Map<String, dynamic> recipeDict = {
+          //     'title': title,
+          //     'ingredients': ingredients,
+          //     'cooking time' : cookingTime
+          //   };
+          //
+          //   // Add the recipe dictionary to the list
+          //   recipeList.add(recipeDict);
+          // }
+          //
+          //
+          // setState(() {
+          //   isLoading = false; // Reset loading state
+          // });
+          //
+          // Navigator.pushReplacement(
+          //   context,
+          //   MaterialPageRoute(builder: (context) => RecipesPage(recipeList: recipeList),),
+          // );
+          //
+          // // use these images
+          // ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          //     content: Text(
+          //         displayResult
+          //     )
+          // )
+          // );
         },
         child: isLoading ? const CircularProgressIndicator() : const Icon(Icons.rocket_launch),
       ),

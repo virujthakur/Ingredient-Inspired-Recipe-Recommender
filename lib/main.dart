@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ingredient_inspire_recipe_recommender/initialscreen.dart';
 import 'homepage.dart';
 
 void main()
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const HomePage(),
+      home: StartPage(),
       theme: ThemeData(
           useMaterial3: true,
           colorSchemeSeed: Colors.black,

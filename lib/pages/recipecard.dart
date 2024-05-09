@@ -34,7 +34,7 @@ class _RecipeCardState extends State<RecipeCard> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Ink.image(
-                image: const AssetImage('assets/images/image1.jpg'),
+                image: const AssetImage('assets/images/salad.jpeg'),
                 height: cardHeight * 0.4, // Adjust the image height as needed
                 fit: BoxFit.cover,
               ),
