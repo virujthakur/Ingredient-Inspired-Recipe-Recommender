@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:ingredient_inspire_recipe_recommender/homepage.dart';
 import 'package:ingredient_inspire_recipe_recommender/login/loginpage.dart';
+import 'package:ingredient_inspire_recipe_recommender/login/register.dart';
 
 import 'login/GoogleSignInApi.dart';
 class StartPage extends StatefulWidget {
@@ -37,7 +38,7 @@ class _StartPageState extends State<StartPage> {
       return HomePage();
     }
     else{
-      return LoginPage();
+      return RegisterPage();
     }
   }
 

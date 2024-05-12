@@ -27,14 +27,14 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     Future<void> signInWithGoogle() async{
       _googleSignIn.signIn();
-      Navigator.push(
+      Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => ProfileScreen(),),
       );
     }
 
     return Scaffold(
-      backgroundColor: Colors.grey[300],
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -44,7 +44,7 @@ class LoginPage extends StatelessWidget {
                 height: 50,
               ),
               //logo
-              MyCircularIcon(imagePath: 'assets/icons/icon_hd.png'),
+              const MyCircularIcon(imagePath: 'assets/icons/icon_hd.png'),
           
               const SizedBox(
                 height:50,

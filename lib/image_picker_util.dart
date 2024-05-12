@@ -11,6 +11,7 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:ingredient_inspire_recipe_recommender/models/recipe.dart';
 import 'package:mime/mime.dart';
 
 import 'identify_ingredients.dart';
@@ -60,7 +61,7 @@ class _ImagePickerUtilState extends State<ImagePickerUtil> {
     List<dynamic> recipes = json.decode(recipesJsonString);
 
     // Create a list to store the recipes as dictionaries
-    List<Map<String, dynamic>> recipeList = [];
+    List<Recipe> recipeList = [];
 
     // Iterate over the recipes to build the dictionary
     for (var recipe in recipes) {
@@ -68,15 +69,10 @@ class _ImagePickerUtilState extends State<ImagePickerUtil> {
       List<dynamic> ingredients = recipe['ingredients'];
       String cookingTime = recipe['cooking time'];
 
-      // Create a dictionary for the current recipe
-      Map<String, dynamic> recipeDict = {
-        'title': title,
-        'ingredients': ingredients,
-        'cooking time' : cookingTime
-      };
+      // Create a Recipe for the current recipe
+      Recipe r= Recipe(name: title, description: ingredients, imagePath: 'assets/images/salad.jpeg', cookingTime: cookingTime);
+      recipeList.add(r);
 
-      // Add the recipe dictionary to the list
-      recipeList.add(recipeDict);
     }
 
 
@@ -84,7 +80,7 @@ class _ImagePickerUtilState extends State<ImagePickerUtil> {
       isLoading = false; // Reset loading state
     });
 
-    Navigator.pushReplacement(
+    Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => RecipesPage(recipeList: recipeList),),
     );

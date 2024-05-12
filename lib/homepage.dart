@@ -33,7 +33,7 @@ class _HomePageState extends State<HomePage> {
         UserHome(),
         const LikesPage(),
         const ImagePickerUtil(title: 'Get Recipes from images'),
-        ProfileScreen()
+        SettingsPage()
       ];
     });
   }
