@@ -5,6 +5,8 @@ from flask_cors import CORS
 import pathlib
 temp = pathlib.PosixPath
 pathlib.PosixPath = pathlib.WindowsPath
+from geoloc import get_user_location
+from geoloc import find_nearby_places
 
 app = Flask(__name__)
 CORS(app)
@@ -74,6 +76,18 @@ def get_recipes_by_ingredients(ingredient_list):
 
     # print(filtered_recipes)
     return filtered_recipes
+
+
+@app.route('/supermarket')
+def find_nearby_supermarket():
+    user_lat, user_lon = get_user_location()
+    if user_lat is not None and user_lon is not None:
+        place_type = "supermarket"
+        search_radius = 10
+        p=find_nearby_places(float(user_lat), float(user_lon), place_type, search_radius)
+        return(p)
+    else:
+        return "no nearby places found"
 
 if __name__ == '__main__':
     app.run(debug=True)
