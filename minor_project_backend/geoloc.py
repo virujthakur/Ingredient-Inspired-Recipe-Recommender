@@ -18,7 +18,7 @@ def find_nearby_places(lat, lon, place_type, radius):
     
     query = f"{place_type} near {lat}, {lon}"
     try:
-        p={}
+        p=[]
         places = geolocator.geocode(query, exactly_one=False, limit=None)
         if places:
             for place in places:
@@ -26,7 +26,7 @@ def find_nearby_places(lat, lon, place_type, radius):
                 place_distance = geodesic((lat, lon), place_coords).kilometers
                 if place_distance <= radius:
                     place_distance=round(place_distance,2)
-                    p.update({place.address:place_distance})
+                    p.append([place.address,place_distance])
                     #print(f"{place.address} ({place_distance:.2f} km)")
             return p
         else:

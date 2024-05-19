@@ -5,8 +5,11 @@ from flask_cors import CORS
 import pathlib
 temp = pathlib.PosixPath
 pathlib.PosixPath = pathlib.WindowsPath
+import json
+from flask import jsonify
 from geoloc import get_user_location
 from geoloc import find_nearby_places
+
 
 app = Flask(__name__)
 CORS(app)
@@ -85,9 +88,17 @@ def find_nearby_supermarket():
         place_type = "supermarket"
         search_radius = 10
         p=find_nearby_places(float(user_lat), float(user_lon), place_type, search_radius)
-        return(p)
+        supermarkets=[]
+        for i in range(len(p)):
+            smrkt={
+                "address":p[i][0],
+                "distance":p[i][1]
+            }
+            supermarkets.append(smrkt)
+        supermarket = json.dumps(supermarkets,indent=0)
+        return jsonify({'Supermarkets':supermarket}) 
     else:
-        return "no nearby places found"
+        return jsonify({'error': 'no supermarkets found!'})
 
 if __name__ == '__main__':
     app.run(debug=True)
