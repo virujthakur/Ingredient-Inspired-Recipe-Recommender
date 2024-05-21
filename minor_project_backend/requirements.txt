@@ -1,0 +1,6 @@
+flask
+fastai
+flask-cors
+pandas
+openpyxl
+geopy
