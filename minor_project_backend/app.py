@@ -4,7 +4,7 @@ from fastai.vision.all import *
 from flask_cors import CORS
 import pathlib
 temp = pathlib.PosixPath
-# pathlib.PosixPath = pathlib.WindowsPath
+pathlib.PosixPath = pathlib.WindowsPath
 import json
 from flask import jsonify
 from geoloc import get_user_location
