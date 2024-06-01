@@ -4,7 +4,7 @@ from fastai.vision.all import *
 from flask_cors import CORS
 import pathlib
 temp = pathlib.PosixPath
-pathlib.PosixPath = pathlib.WindowsPath
+# pathlib.PosixPath = pathlib.WindowsPath
 import json
 from flask import jsonify
 from geoloc import get_user_location
@@ -16,7 +16,7 @@ CORS(app)
 
 # Loading the pre-trained model using colab
 
-learn = load_learner('resnet50_precision.pkl')
+learn = load_learner('resnet_101.pkl')
 recipes_df = pd.read_excel('Minor Project.xlsx', sheet_name= 'Recipes2Ing')  # Adjust the filename as needed
 
 @app.route('/predict', methods=['POST'])

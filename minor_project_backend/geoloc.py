@@ -4,9 +4,15 @@ import requests
 
 def get_user_location():
     try:
-        response = requests.get('https://ipinfo.io')
-        data = response.json()
-        return data['loc'].split(',')
+        # response = requests.get('https://ipinfo.io')
+        # data = response.json()
+        # return data['loc'].split(',')
+        loc = Nominatim(user_agent="GetLoc")
+        getLoc = loc.geocode("shastri park")
+        print(getLoc.address)
+        print("Latitude = ", getLoc.latitude, "\n")
+        print("Longitude = ", getLoc.longitude)
+        return getLoc.latitude,getLoc.longitude
     except:
         print("Error: Unable to detect your location.")
         return None, None
