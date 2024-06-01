@@ -22,5 +22,6 @@ A cross-platform application utilizing ResNet-101 neural network to accurately i
 
 <img width="1582" alt="Screenshot 2024-06-01 at 1 27 34 PM" src="https://github.com/virujthakur/Ingredient-Inspired-Recipe-Recommender/assets/77432903/7f2a8deb-c4c8-4b56-9fd5-9c32e157b6e0">
 
+<img width="1582" alt="Screenshot 2024-06-01 at 1 27 42 PM" src="https://github.com/virujthakur/Ingredient-Inspired-Recipe-Recommender/assets/77432903/618cd5cb-8057-4bdc-8505-ce4b76c31aed">
 
 
