@@ -57,7 +57,7 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
-  http: 
+  http:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -79,6 +79,98 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
+    - assets/recipe_images_final/Prawn Malai Curry recipe/
+    - assets/recipe_images_final/Khichree recipe/
+    - assets/recipe_images_final/Palak Paneer recipe/
+    - assets/recipe_images_final/Hari Mirch ka Achar recipe/
+    - assets/recipe_images_final/Chilli Garlic Potatoes recipe/
+    - assets/recipe_images_final/Kadi Pakora recipe/
+    - assets/recipe_images_final/Spicy Potato Salad recipe/
+    - assets/recipe_images_final/Crunchy Poha with Peanuts recipe/
+    - assets/recipe_images_final/Punjabi Chole recipe/
+    - assets/recipe_images_final/Avial recipe/
+    - assets/recipe_images_final/Grilled Sandwich recipe/
+    - assets/recipe_images_final/Chocochip Cookies recipe/
+    - assets/recipe_images_final/Rice Kheer recipe/
+    - assets/recipe_images_final/Rawa Masala Idli recipe/
+    - assets/recipe_images_final/Aam ki Chutney recipe/
+    - assets/recipe_images_final/Malai Kofta recipe/
+    - assets/recipe_images_final/Seekh Kabab recipe/
+    - assets/recipe_images_final/Payasam recipe/
+    - assets/recipe_images_final/Lababdar Machhi Curry recipe/
+    - assets/recipe_images_final/Goan Fish Curry recipe/
+    - assets/recipe_images_final/Gujrati Dahi ni Kadi recipe/
+    - assets/recipe_images_final/Suji Halwa recipe/
+    - assets/recipe_images_final/Stuffed Tomatoes recipe/
+    - assets/recipe_images_final/Pao Bhaji recipe/
+    - assets/recipe_images_final/Khandvi recipe/
+    - assets/recipe_images_final/Cheese Pizza recipe/
+    - assets/recipe_images_final/Stirfried Cabbage recipe/
+    - assets/recipe_images_final/Bhapa Mach recipe/
+    - assets/recipe_images_final/Shepherd's Pie recipe/
+    - assets/recipe_images_final/Hariyali Paneer Tikka recipe/
+    - assets/recipe_images_final/Dhokla recipe/
+    - assets/recipe_images_final/Bharvan Bhindi recipe/
+    - assets/recipe_images_final/Apple Jam recipe/
+    - assets/recipe_images_final/Vegetable Biryani recipe/
+    - assets/recipe_images_final/Masala Mushroom recipe/
+    - assets/recipe_images_final/Creamy Vegetable Dip recipe/
+    - assets/recipe_images_final/Sambar recipe/
+    - assets/recipe_images_final/Cream of Mushroom Soup recipe/
+    - assets/recipe_images_final/Carrot Halwa recipe/
+    - assets/recipe_images_final/Tandoori Chicken recipe/
+    - assets/recipe_images_final/White Sauce recipe/
+    - assets/recipe_images_final/Cake recipe/
+    - assets/recipe_images_final/Khajoor Imli ki Chutney (Sonth) recipe/
+    - assets/recipe_images_final/Methi Chicken recipe/
+    - assets/recipe_images_final/Coconut Chutney with Baghar recipe/
+    - assets/recipe_images_final/Chicken Sweet Corn Soup recipe/
+    - assets/recipe_images_final/Coconut Burfi recipe/
+    - assets/recipe_images_final/Choorma Ladoo recipe/
+    - assets/recipe_images_final/Apple Stew recipe/
+    - assets/recipe_images_final/Aloo ki Tikki recipe/
+    - assets/recipe_images_final/Thai Red Curry recipe/
+    - assets/recipe_images_final/Tomato Rice recipe/
+    - assets/recipe_images_final/Tomato Rasam recipe/
+    - assets/recipe_images_final/Rajasthani Gatte ki Kadi recipe/
+    - assets/recipe_images_final/Patrani Machhi recipe/
+    - assets/recipe_images_final/Fish Fingers recipe/
+    - assets/recipe_images_final/Shukto recipe/
+    - assets/recipe_images_final/Moong Dal Khichdi recipe/
+    - assets/recipe_images_final/Nutri Crispy Chat recipe/
+    - assets/recipe_images_final/Keema Matar recipe/
+    - assets/recipe_images_final/Bengali Chollar Dal recipe/
+    - assets/recipe_images_final/Soya Nuggets recipe/
+    - assets/recipe_images_final/Upma recipe/
+    - assets/recipe_images_final/Vegetable Au Gratin recipe/
+    - assets/recipe_images_final/Tomato Soup recipe/
+    - assets/recipe_images_final/Chocolate Pudding recipe/
+    - assets/recipe_images_final/Vegetable Cutlet recipe/
+    - assets/recipe_images_final/Chinese Noodles recipe/
+    - assets/recipe_images_final/Mix Vegetable Achar recipe/
+    - assets/recipe_images_final/Baked Vegetables in White Sauce recipe/
+    - assets/recipe_images_final/Lemon Tarts recipe/
+    - assets/recipe_images_final/Eggless Fruit Cake recipe/
+    - assets/recipe_images_final/Aam Ka Panna recipe/
+    - assets/recipe_images_final/Cheese Omelette recipe/
+    - assets/recipe_images_final/Sweet Kesari Rice recipe/
+    - assets/recipe_images_final/Baked Macaroni And Cheese recipe/
+    - assets/recipe_images_final/Chicken Biryani recipe/
+    - assets/recipe_images_final/Vegetable Pulao recipe/
+    - assets/recipe_images_final/Dry Gobi Subzi recipe/
+    - assets/recipe_images_final/Chicken Tikka recipe/
+    - assets/recipe_images_final/Sukhi Urad Dal recipe/
+    - assets/recipe_images_final/Chocolate Walnut Cake recipe/
+    - assets/recipe_images_final/Nan Khatai recipe/
+    - assets/recipe_images_final/Handvo recipe/
+    - assets/recipe_images_final/Phirni recipe/
+    - assets/recipe_images_final/Apple Pie recipe/
+    - assets/recipe_images_final/Cabbage Rolls recipe/
+    - assets/recipe_images_final/Fruit Custard recipe/
+    - assets/recipe_images_final/Pudina Fish recipe/
+    - assets/recipe_images_final/Bread Rolls recipe/
+    - assets/recipe_images_final/Chicken Chettinad recipe/
+    - assets/recipe_images_final/Dum Aloo Posto recipe/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

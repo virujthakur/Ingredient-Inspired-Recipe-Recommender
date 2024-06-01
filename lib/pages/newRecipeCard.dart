@@ -48,7 +48,7 @@ class NewRecipeCard extends StatelessWidget {
                   tag: recipe.name,
                   child: ClipRRect(
                       borderRadius: BorderRadius.circular(8),
-                      child: Image.asset(recipe.imagePath, height: 120,)
+                      child: Image.asset(recipe.imagePath, height: 100,)
                   ),
                 )
               ],

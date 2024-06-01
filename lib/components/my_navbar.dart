@@ -23,8 +23,8 @@ class MyNavbar extends StatelessWidget {
           text: 'Home' ,
         ),
         GButton(
-          icon: Icons.favorite,
-          text: 'Likes',
+          icon: Icons.shopping_bag_outlined,
+          text: 'Shop',
         ),
         GButton(
             icon: Icons.camera_alt,

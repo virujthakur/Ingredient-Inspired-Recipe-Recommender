@@ -12,6 +12,7 @@ import 'package:ingredient_inspire_recipe_recommender/pages/likes.dart';
 import 'package:ingredient_inspire_recipe_recommender/pages/recipes.dart';
 import 'package:ingredient_inspire_recipe_recommender/pages/search.dart';
 import 'package:ingredient_inspire_recipe_recommender/pages/settings.dart';
+import 'package:ingredient_inspire_recipe_recommender/find_stores/stores.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -31,7 +32,7 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       _pages = [
         UserHome(),
-        const LikesPage(),
+        const StorePage(),
         const ImagePickerUtil(title: 'Get Recipes from images'),
         SettingsPage()
       ];

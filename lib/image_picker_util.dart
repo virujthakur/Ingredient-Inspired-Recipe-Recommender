@@ -70,7 +70,7 @@ class _ImagePickerUtilState extends State<ImagePickerUtil> {
       String cookingTime = recipe['cooking time'];
 
       // Create a Recipe for the current recipe
-      Recipe r= Recipe(name: title, description: ingredients, imagePath: 'assets/images/salad.jpeg', cookingTime: cookingTime);
+      Recipe r= Recipe(name: title, description: ingredients, imagePath: 'assets/recipe_images_final/'+ title+ ' recipe/Image_1.jpg', cookingTime: cookingTime);
       recipeList.add(r);
 
     }
@@ -86,12 +86,12 @@ class _ImagePickerUtilState extends State<ImagePickerUtil> {
     );
 
     // use these images
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: Text(
-            displayResult
-        )
-    )
-    );
+    // ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+    //     content: Text(
+    //         displayResult
+    //     )
+    // )
+    // );
 
   }
 
